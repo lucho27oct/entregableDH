@@ -4,7 +4,7 @@
 	if ($_POST) {
 		$actorToSave = new Actor($_POST['first_name'], $_POST['last_name']);
     $actorToSave->setRating($_POST["rating"]);
-    $actorToSave->setFavoriteMovieId($_POST["id"]);
+    $actorToSave->setFavoriteMovieId($_POST["favorite_movie_id"]);
 
 		$saved = DB::saveActor($actorToSave);
 	}
@@ -43,7 +43,7 @@
   										<select class="form-control" name="favorite_movie_id">
                       <option value="">Elegí una pelicula</option>
                       <?php foreach ($movies as $movie): ?>
-                        <option value="<?php echo $movie->getTitle() ?>"><?php echo $movie->getTitle() ?></option>
+                        <option value="<?php echo $movie->getID() ?>"><?php echo $movie->getTitle() ?></option>
                       <?php endforeach; ?>
                     </select>
   								</div>

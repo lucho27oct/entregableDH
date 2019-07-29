@@ -25,7 +25,7 @@
 									<th scope="row"><?php echo $actor->getFirstName(); ?></th>
 									<td><?php echo $actor->getLastName(); ?></td>
 									<td><?php echo $actor->getRating(); ?></td>
-									<td><?php echo $actor->getFavouriteMovieId(); ?></td>
+									<td><?php echo $actor->getFavoriteMovieId(); ?></td>
 								</tr>
 							<?php endforeach; ?>
 			  			</tbody>

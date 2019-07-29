@@ -66,7 +66,7 @@
 		  $finalActor = new Actor($actor["first_name"], $actor["last_name"]);
 			$finalActor->setID($actor["id"]);
 			$finalActor->setRating($actor["rating"]);
-			$finalActor->setFavouriteMovieId($actor["favorite_movie_id"]);
+			$finalActor->setFavoriteMovieId($actor["favorite_movie_id"]);
 			$actorsObject[] = $finalActor;
 		} return $actorsObject;
 
