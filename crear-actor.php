@@ -4,7 +4,7 @@
 	if ($_POST) {
 		$actorToSave = new Actor($_POST['first_name'], $_POST['last_name']);
     $actorToSave->setRating($_POST["rating"]);
-    $actorToSave->setFavouriteMovieId($_POST["favourite_movie_id"]);
+    $actorToSave->setFavoriteMovieId($_POST["id"]);
 
 		$saved = DB::saveActor($actorToSave);
 	}
@@ -23,13 +23,13 @@
 							<div class="col-6">
 								<div class="form-group">
 									<label>Nombre:</label>
-									<input type="text" class="form-control" placeholder="Ej: Comedia" name="first_name">
+									<input type="text" class="form-control" placeholder="Ej: Ricardo" name="first_name">
 								</div>
 							</div>
 							<div class="col-6">
 								<div class="form-group">
 									<label>Apellido:</label>
-									<input type="text" class="form-control" placeholder="Ej: 10" name="last_name">
+									<input type="text" class="form-control" placeholder="Ej: Darin" name="last_name">
 								</div>
 							</div>
 							<div class="col-6">
@@ -40,10 +40,10 @@
                 <div class="col-6">
   								<div class="form-group">
   									<label>Pelicula favorita:</label>
-  										<select class="form-control" name="favourite_movie_id">
-                      <option value="">Elegí una</option>
+  										<select class="form-control" name="favorite_movie_id">
+                      <option value="">Elegí una pelicula</option>
                       <?php foreach ($movies as $movie): ?>
-                        <option value="<?php echo $movie->getID() ?>"><?php echo $genre->getName() ?></option>
+                        <option value="<?php echo $movie->getTitle() ?>"><?php echo $movie->getTitle() ?></option>
                       <?php endforeach; ?>
                     </select>
   								</div>

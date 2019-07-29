@@ -7,7 +7,7 @@
 			global $connection;
 
 			$stmt = $connection->prepare("
-				SELECT m.id AS 'movie_id', m.title, m.rating, m.awards, m.release_date, m.length, g.name AS 'genre', g.id AS 'genre_id'
+				SELECT m.id AS 'id', m.title, m.rating, m.awards, m.release_date, m.length, g.name AS 'genre', g.id AS 'genre_id'
 				FROM movies as m
 				LEFT JOIN genres as g
 				ON g.id = m.genre_id
@@ -58,15 +58,15 @@
 
 		public static function getAllActors(){
 			global $connection;
-			$stmt = $connection->prepare("SELECT id, first_name, last_name, rating, favourite_movie_id FROM actors");
-		$stmt = execute();
+			$stmt = $connection->prepare("SELECT id, first_name, last_name, rating, favorite_movie_id FROM actors");
+		$stmt ->execute();
 		$actors = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		$actorsObject = [];
 		foreach ($actors as $actor){
 		  $finalActor = new Actor($actor["first_name"], $actor["last_name"]);
-			$finalActor->setID($genre["id"]);
+			$finalActor->setID($actor["id"]);
 			$finalActor->setRating($actor["rating"]);
-			$finalActor->setFavouriteMovieId($actor["favourite_movie_id"]);
+			$finalActor->setFavouriteMovieId($actor["favorite_movie_id"]);
 			$actorsObject[] = $finalActor;
 		} return $actorsObject;
 
@@ -143,14 +143,14 @@
 		if (!in_array($actor->getFirstName() && $actor->getLastName(), $finalActors)){
 
 			$stmt = $connection->prepare("
-			INSERT INTO actors (first_name, last_name, rating, favourite_movie_id)
-			VALUES(:first_name, :last_name, :rating, :favourite_movie_id)
+			INSERT INTO actors (first_name, last_name, rating, favorite_movie_id)
+			VALUES(:first_name, :last_name, :rating, :favorite_movie_id)
 		 	");
 
 		 $stmt->bindValue(":first_name", $actors->getFirstName());
 		 $stmt->bindValue(":last_name", $actors->getLastName());
 		 $stmt->bindValue(":rating", $actors->getRating());
-		 $stmt->bindValue(":favourite_movie_id", $actors->getFavouriteMovieId());
+		 $stmt->bindValue(":favorite_movie_id", $actors->getFavoriteMovieId());
 		 $stmt->execute();
 		 return true;
 		} else {

@@ -6,7 +6,7 @@
 		private $first_name;
 		private $last_name;
 		private $rating;
-    private $favourite_movie_id;
+    private $favorite_movie_id;
 
 		public function __construct($first_name, $last_name)
 		{
@@ -49,11 +49,11 @@
 			return $this->rating;
 		}
 
-    public function setFavouriteMovieId($favourite_movie_id){
-      $this->favourite_movie_id = $favourite_movie_id;
+    public function setFavoriteMovieId($favorite_movie_id){
+      $this->favorite_movie_id = $favorite_movie_id;
     }
-    public function getFavouriteMovieId()
+    public function getFavoriteMovieId()
 		{
-			return $this->favourite_movie_id;
+			return $this->favorite_movie_id;
 		}
 	}
