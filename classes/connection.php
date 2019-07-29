@@ -1,7 +1,7 @@
 <?php
 
 	$user = 'root';
-	$pass = '';
+	$pass = '$';
 
 	try {
 		$connection = new PDO(

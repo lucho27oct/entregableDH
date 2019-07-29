@@ -134,23 +134,22 @@
 			$actors = self::getAllActors();
 			$finalActors = [];
 
-		foreach($actors as $actor){
-			$finalActors[] = $actor->getFirstName();
-			$finalActors[] = $actor->getLastName();
-
+		foreach($actors as $oneActor){
+			$finalActors[] = $oneActor->getFirstName();
+			$finalActors[] = $oneActor->getLastName();
 		}
 
-		if (!in_array($actor->getFirstName() && $actor->getLastName(), $finalActors)){
+		if (!in_array($actor->getFirstName(), $finalActors) && !in_array($actor->getLastName(), $finalActors)){
 
 			$stmt = $connection->prepare("
 			INSERT INTO actors (first_name, last_name, rating, favorite_movie_id)
 			VALUES(:first_name, :last_name, :rating, :favorite_movie_id)
 		 	");
 
-		 $stmt->bindValue(":first_name", $actors->getFirstName());
-		 $stmt->bindValue(":last_name", $actors->getLastName());
-		 $stmt->bindValue(":rating", $actors->getRating());
-		 $stmt->bindValue(":favorite_movie_id", $actors->getFavoriteMovieId());
+		 $stmt->bindValue(":first_name", $actor->getFirstName());
+		 $stmt->bindValue(":last_name", $actor->getLastName());
+		 $stmt->bindValue(":rating", $actor->getRating());
+		 $stmt->bindValue(":favorite_movie_id", $actor->getFavoriteMovieId());
 		 $stmt->execute();
 		 return true;
 		} else {

@@ -1,6 +1,8 @@
 <?php
 	require_once 'autoload.php';
 
+	$movies = DB::getAllMovies();
+
 	if ($_POST) {
 		$actorToSave = new Actor($_POST['first_name'], $_POST['last_name']);
     $actorToSave->setRating($_POST["rating"]);

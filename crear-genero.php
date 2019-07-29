@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-10">
-					<h2>Crear película</h2>
+					<h2>Crear género</h2>
 					<form method="post">
 						<div class="row">
 							<div class="col-6">
